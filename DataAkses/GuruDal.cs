@@ -59,13 +59,13 @@ namespace sekolahku_jude.DataAkses
             }
         }
 
-        public void Delete(GuruModel model)
+        public void Delete(string id)
         {
-            const string sql = @"Delete Form tb_guru where guru_id=@GuruId";
+            const string sql = @"Delete From tb_guru where guru_id=@GuruId";
 
 
             var dp = new DynamicParameters();
-            dp.AddParam("@GuruID", model.GuruId, System.Data.SqlDbType.VarChar);
+            dp.AddParam("@GuruID", id, System.Data.SqlDbType.VarChar);
 
             using (var conn = new SqlConnection(_conn))
             {
@@ -75,7 +75,7 @@ namespace sekolahku_jude.DataAkses
 
         public GuruModel getData(string id)
         {
-            const string sql = @"select * from tb_guru where guru_id=@GuruId";
+            const string sql = @"select guru_id AS GuruId, guru_name AS GuruName from tb_guru where guru_id=@GuruId";
 
             var dp = new DynamicParameters();
             dp.AddParam("@GuruId", id, System.Data.SqlDbType.VarChar);
@@ -88,7 +88,7 @@ namespace sekolahku_jude.DataAkses
 
         public IEnumerable<GuruModel> ListData()
         {
-            const string sql = @"select guru_id, guru_name from tb_guru";
+            const string sql = @"select guru_id AS GuruId,  guru_name As GuruName from tb_guru";
 
             using (var conn = new SqlConnection(_conn))
             {

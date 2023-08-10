@@ -14,31 +14,43 @@ namespace sekolahku_jude.Forms
 {
     public partial class GuruForm : Form
     {
-        AppDbContextDataContext context;
         private GuruDal dal;
+        private string id;
         public GuruForm()
         {
-            context = new AppDbContextDataContext();
             dal = new GuruDal();
             InitializeComponent();
         }
 
-        private void loadData() { 
+        private void loadData() {
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AllowUserToAddRows = false;
-         
-            var data =(from c in context.tb_gurus
-                       orderby c.guru_id ascending
-                       select c).ToList();
-            var binding = new BindingSource();
-            binding.DataSource = data;
-            dataGridView1.DataSource = binding;
+            dataGridView1.AllowUserToAddRows = false;   
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Rows.Clear(); 
+            try
+            {
+                var data = dal.ListData().ToList();
+                if (data != null)
+                {
+                    foreach (var item in data)
+                    {
+                        var num = dataGridView1.Rows.Add();
+                        dataGridView1.Rows[num].Cells[0].Value = item.GuruId;
+                        dataGridView1.Rows[num].Cells[1].Value = item.GuruName;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }            
 
         }
 
         private void clearForm() {
             tb_guruId.Text = "";
             tb_guruName.Text = "";
+            tb_guruId.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,9 +77,9 @@ namespace sekolahku_jude.Forms
             {
                 GuruId = tb_guruId.Text,
                 GuruName = tb_guruName.Text,
-            };
+            };           
 
-            var gurudb = dal.getData(guru.GuruId);
+            var gurudb = dal.getData(tb_guruId.Text);
             if (gurudb != null)
             {
                 dal.Update(guru);
@@ -86,12 +98,41 @@ namespace sekolahku_jude.Forms
         
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            clearForm();
         }
 
         private void GuruForm_Load(object sender, EventArgs e)
         {
             loadData();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            var data=dal.getData(id);
+            if (data != null)
+            {
+               tb_guruId.Text=data.GuruId;
+                tb_guruName.Text=data.GuruName;
+                tb_guruId.Enabled = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (tb_guruId.Text == "")
+            {
+                MessageBox.Show(null, "Belum ada data yang terpilih", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult result= MessageBox.Show(null, "Apakah Anda yakin ingin menghapus data ini", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result==DialogResult.Yes)
+            {
+                dal.Delete(id);
+                MessageBox.Show(null,"Berhasil Menghapus data","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                loadData();
+                clearForm() ;
+            }
         }
     }
 }
