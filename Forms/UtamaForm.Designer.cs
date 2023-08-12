@@ -32,10 +32,10 @@
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
@@ -75,6 +75,11 @@
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Text = "Master";
             // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Name = "ribbonTab2";
+            this.ribbonTab2.Text = null;
+            // 
             // ribbonButton3
             // 
             this.ribbonButton3.Image = global::sekolahku_jude.Properties.Resources.icons8_teacher_48;
@@ -100,11 +105,6 @@
             this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             this.ribbonButton2.Text = "Siswa";
             // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Name = "ribbonTab2";
-            this.ribbonTab2.Text = null;
-            // 
             // ribbonButton4
             // 
             this.ribbonButton4.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.Image")));
@@ -112,6 +112,7 @@
             this.ribbonButton4.Name = "ribbonButton4";
             this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
             this.ribbonButton4.Text = "Mapel";
+            this.ribbonButton4.Click += new System.EventHandler(this.ribbonButton4_Click);
             // 
             // UtamaForm
             // 

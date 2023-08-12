@@ -33,10 +33,13 @@ namespace sekolahku_jude
     partial void Inserttb_guru(tb_guru instance);
     partial void Updatetb_guru(tb_guru instance);
     partial void Deletetb_guru(tb_guru instance);
+    partial void Inserttb_mapel(tb_mapel instance);
+    partial void Updatetb_mapel(tb_mapel instance);
+    partial void Deletetb_mapel(tb_mapel instance);
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::sekolahku_jude.Properties.Settings.Default.db_sekolah_fadlanConnectionString, mappingSource)
+				base(global::sekolahku_jude.Properties.Settings.Default.db_sekolah_fadlanConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -107,7 +110,7 @@ namespace sekolahku_jude
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_guru_id", DbType="VarChar(3) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_guru_id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string guru_id
 		{
 			get
@@ -127,7 +130,7 @@ namespace sekolahku_jude
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_guru_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_guru_name", DbType="VarChar(50)")]
 		public string guru_name
 		{
 			get
@@ -169,18 +172,31 @@ namespace sekolahku_jude
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_mapel")]
-	public partial class tb_mapel
+	public partial class tb_mapel : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _mapel_id;
 		
 		private string _mapel_name;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onmapel_idChanging(string value);
+    partial void Onmapel_idChanged();
+    partial void Onmapel_nameChanging(string value);
+    partial void Onmapel_nameChanged();
+    #endregion
+		
 		public tb_mapel()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mapel_id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mapel_id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string mapel_id
 		{
 			get
@@ -191,7 +207,11 @@ namespace sekolahku_jude
 			{
 				if ((this._mapel_id != value))
 				{
+					this.Onmapel_idChanging(value);
+					this.SendPropertyChanging();
 					this._mapel_id = value;
+					this.SendPropertyChanged("mapel_id");
+					this.Onmapel_idChanged();
 				}
 			}
 		}
@@ -207,8 +227,32 @@ namespace sekolahku_jude
 			{
 				if ((this._mapel_name != value))
 				{
+					this.Onmapel_nameChanging(value);
+					this.SendPropertyChanging();
 					this._mapel_name = value;
+					this.SendPropertyChanged("mapel_name");
+					this.Onmapel_nameChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

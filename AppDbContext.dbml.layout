@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AppDbContext">
   <DataContextMoniker Name="/AppDbContextDataContext" />
   <nestedChildShapes>
-    <classShape Id="21422294-8543-421a-a074-e3a5eba59fb7" absoluteBounds="6.875, 1.5, 2, 1.1939925130208335">
+    <classShape Id="a26f0a14-6879-4aa4-82ab-088760704697" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
       <DataClassMoniker Name="/AppDbContextDataContext/tb_guru" />
       <nestedChildShapes>
-        <elementListCompartment Id="97b52190-b57a-4c50-a4de-48ce41688b24" absoluteBounds="6.89, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ba7be9c1-4126-45c1-8a00-3610bd6578e9" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4fd4df82-69af-43e6-865e-92bdab487115" absoluteBounds="6.875, 3.5, 2, 1.1939925130208335">
+    <classShape Id="38913bc1-279c-46a1-afb7-f37c2ad01e18" absoluteBounds="0.75, 2.75, 2, 1.1939925130208335">
       <DataClassMoniker Name="/AppDbContextDataContext/tb_mapel" />
       <nestedChildShapes>
-        <elementListCompartment Id="bd038733-09de-411d-9854-8d83545ec2ca" absoluteBounds="6.89, 3.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e2243df3-f67f-4113-b9b0-abca493af0c2" absoluteBounds="0.765, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -25,5 +25,14 @@ namespace sekolahku_jude
             form.MdiParent = this;
             form.Show();
         }
+
+        private void ribbonButton4_Click(object sender, EventArgs e)
+        {
+            var fmapel = new MapelForm();
+            fmapel.StartPosition = FormStartPosition.CenterScreen;
+            fmapel.MdiParent=this;
+            fmapel.Show();
+
+        }
     }
 }

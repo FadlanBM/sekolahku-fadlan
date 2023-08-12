@@ -61,6 +61,12 @@
     <Compile Include="Forms\GuruForm.Designer.cs">
       <DependentUpon>GuruForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MapelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MapelForm.Designer.cs">
+      <DependentUpon>MapelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UtamaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\GuruForm.resx">
       <DependentUpon>GuruForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MapelForm.resx">
+      <DependentUpon>MapelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtamaForm.resx">
       <DependentUpon>UtamaForm.cs</DependentUpon>
