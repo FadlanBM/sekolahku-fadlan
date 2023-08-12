@@ -72,6 +72,14 @@ namespace sekolahku_jude
 				return this.GetTable<tb_guru>();
 			}
 		}
+		
+		public System.Data.Linq.Table<tb_mapel> tb_mapels
+		{
+			get
+			{
+				return this.GetTable<tb_mapel>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_guru")]
@@ -156,6 +164,51 @@ namespace sekolahku_jude
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_mapel")]
+	public partial class tb_mapel
+	{
+		
+		private string _mapel_id;
+		
+		private string _mapel_name;
+		
+		public tb_mapel()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mapel_id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string mapel_id
+		{
+			get
+			{
+				return this._mapel_id;
+			}
+			set
+			{
+				if ((this._mapel_id != value))
+				{
+					this._mapel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mapel_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string mapel_name
+		{
+			get
+			{
+				return this._mapel_name;
+			}
+			set
+			{
+				if ((this._mapel_name != value))
+				{
+					this._mapel_name = value;
+				}
 			}
 		}
 	}

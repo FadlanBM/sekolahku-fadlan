@@ -6,4 +6,10 @@
       <Column Name="guru_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.tb_mapel" Member="tb_mapels">
+    <Type Name="tb_mapel">
+      <Column Name="mapel_id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="mapel_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
