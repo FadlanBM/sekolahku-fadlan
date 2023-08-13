@@ -91,6 +91,11 @@ namespace sekolahku_jude.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (tb_mapelid.Text=="")
+            {
+                var dialog = MessageBox.Show(null, "Belum ada data yang di pilih", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var data = dal.GetData(tb_mapelid.Text);
             if (data != null) {
             var dialog = MessageBox.Show(null, "Apakah Anda yakin ingin menghapus data ini ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -108,6 +113,11 @@ namespace sekolahku_jude.Forms
                 MessageBox.Show(null, "Data tidak di temukan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            clearData();    
         }
     }
 }
