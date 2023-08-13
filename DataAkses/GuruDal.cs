@@ -92,7 +92,15 @@ namespace sekolahku_jude.DataAkses
 
             using (var conn = new SqlConnection(_conn))
             {
-                return conn.Read<GuruModel>(sql);
+                var data= conn.Read<GuruModel>(sql);
+                if (data!=null)
+                {
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

@@ -15,7 +15,6 @@ namespace sekolahku_jude.Forms
     public partial class GuruForm : Form
     {
         private GuruDal dal;
-        private string id;
         public GuruForm()
         {
             dal = new GuruDal();
@@ -108,14 +107,15 @@ namespace sekolahku_jude.Forms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            var data=dal.getData(id);
-            if (data != null)
+           var id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.ColumnIndex==2)
             {
-               tb_guruId.Text=data.GuruId;
-                tb_guruName.Text=data.GuruName;
+                var data = dal.getData(id);
+                tb_guruId.Text = data.GuruId;
+                tb_guruName.Text = data.GuruName;
                 tb_guruId.Enabled = false;
             }
+                    
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -125,13 +125,21 @@ namespace sekolahku_jude.Forms
                 MessageBox.Show(null, "Belum ada data yang terpilih", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            DialogResult result= MessageBox.Show(null, "Apakah Anda yakin ingin menghapus data ini", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result==DialogResult.Yes)
+            var data=dal.getData(tb_guruId.Text);
+            if (data!=null)
             {
-                dal.Delete(id);
-                MessageBox.Show(null,"Berhasil Menghapus data","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                loadData();
-                clearForm() ;
+                DialogResult result = MessageBox.Show(null, "Apakah Anda yakin ingin menghapus data ini", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    dal.Delete(tb_guruId.Text);
+                    MessageBox.Show(null, "Berhasil Menghapus data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadData();
+                    clearForm();
+                }
+            }
+            else
+            {
+            MessageBox.Show(null, "Data tidak di temukan", "Wa◘rning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
