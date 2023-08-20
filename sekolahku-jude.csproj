@@ -95,12 +95,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAkses\GuruDal.cs" />
+    <Compile Include="DataAkses\KelasDal.cs" />
     <Compile Include="DataAkses\MapelDal.cs" />
+    <Compile Include="Forms\BrowserDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BrowserDataForm.Designer.cs">
+      <DependentUpon>BrowserDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GuruForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\GuruForm.Designer.cs">
       <DependentUpon>GuruForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KelasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KelasForm.Designer.cs">
+      <DependentUpon>KelasForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MapelForm.cs">
       <SubType>Form</SubType>
@@ -115,11 +128,18 @@
       <DependentUpon>UtamaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\GuruModel.cs" />
+    <Compile Include="Models\KelasModel.cs" />
     <Compile Include="Models\MapelModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\BrowserDataForm.resx">
+      <DependentUpon>BrowserDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GuruForm.resx">
       <DependentUpon>GuruForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KelasForm.resx">
+      <DependentUpon>KelasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapelForm.resx">
       <DependentUpon>MapelForm.cs</DependentUpon>

@@ -47,8 +47,7 @@ namespace sekolahku_jude.Forms
             {          
                 dal.insert(mapel);
                 MessageBox.Show( null, "Berhasil Input data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information) ;
-                clearData();
-               
+                clearData();               
             }
             else
             {
